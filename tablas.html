@@ -17,6 +17,62 @@
 .map .i0{left:28%;top:34%}.map .i1{left:72%;top:68%}
 .operation-picker{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}.operation-card{display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px 16px;text-align:center}.operation-card strong{font-size:40px;color:#a95f2d}.operation-card b{font-size:20px}.operation-card span{font-size:16px;font-weight:400;line-height:1.4}
 @media(max-width:440px){.map .i0{left:27%;top:31%}.map .i1{left:71%;top:68%}.operation-picker{gap:10px}.operation-card{padding:18px 10px}.operation-card b{font-size:17px}.operation-card span{font-size:14px}}
+/* Touch-friendly tablet layout, in portrait and landscape. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+.layout>*,.side>*,.grid>*,.split>*,.operation-picker>*{min-width:0}
+button,input,select,summary{touch-action:manipulation}
+button,summary{min-height:48px}
+input:not([type=checkbox]):not([type=hidden]),select{min-height:48px;max-width:100%;font-size:max(16px,1em)}
+input[type=checkbox]{width:24px;height:24px;flex-shrink:0}
+input,select{scroll-margin-block:100px}
+dialog{max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contain}
+#toast{max-width:calc(100% - 32px);width:max-content;overflow-wrap:anywhere}
+.audio-bar input[type=range]{height:48px;min-width:120px;cursor:pointer}
+.audio-bar input[type=range]::-webkit-slider-thumb{width:24px;height:24px}
+.audio-bar input[type=range]::-moz-range-thumb{width:24px;height:24px}
+@media (min-width:600px) and (max-width:1400px){
+ body{font-size:18px}
+ header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;padding:18px 24px}
+ .brand{font-size:24px}.brand small{font-size:11px;line-height:1.5;letter-spacing:1px}
+ nav{grid-column:1/-1;order:3;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:12px}
+ nav button{font-size:16px;min-height:52px;padding:12px 10px;line-height:1.3}
+ header>.coins{font-size:18px;min-height:52px}
+ main{padding:28px 24px 48px}
+ h1{font-size:clamp(32px,4vw,42px);line-height:1.2}h2{font-size:30px;line-height:1.2}h3{font-size:24px}
+ .eyebrow{font-size:13px;letter-spacing:1.5px}.small,.notice,.pill,footer{font-size:15px}
+ button{font-size:18px;min-height:54px;padding:14px 20px;line-height:1.35}
+ .audio-bar{padding:12px 24px;gap:12px 24px;font-size:16px}
+ .audio-bar button{font-size:16px;min-height:50px;padding:12px 18px}
+ .audio-bar input[type=range]{width:160px}.audio-note{font-size:14px;line-height:1.5}
+ .layout{grid-template-columns:minmax(0,1fr);gap:20px}
+ .map{min-height:480px}.map .island{width:220px;max-width:44%;min-width:0;font-size:18px;padding:16px 12px;line-height:1.3}
+ .island span{font-size:36px}.island small{font-size:14px;line-height:1.4;margin-top:8px}
+ .map-tag{font-size:12px;max-width:80%;line-height:1.5}
+ .side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+ .next p{font-size:17px}.card{padding:24px}.side .card{display:flex;flex-direction:column}.side button{margin-top:auto}
+ .mission{max-width:900px;margin:12px auto}.mission .card{padding:28px}
+ .steps{gap:10px}.steps span{font-size:15px;line-height:1.4;padding:12px 8px}
+ .table-picker{gap:16px}.table-tile{min-height:120px;padding:20px}.table-tile span{font-size:17px}.table-tile strong{font-size:42px}
+ .table-trail{gap:8px}.table-trail span{font-size:16px;min-width:40px;text-align:center}
+ .direct-table-equation{font-size:clamp(40px,5vw,54px);gap:20px;padding:26px 18px;flex-wrap:wrap}
+ .direct-table-equation input{font-size:40px;width:150px;min-height:76px}
+ .quiz-operation{font-size:60px;padding:28px 20px}
+ .three-answers{gap:16px}.three-answers button{min-height:130px}.three-answers button small{font-size:16px}.three-answers button strong{font-size:46px}
+ .operation-picker{gap:20px}.operation-card{padding:28px 18px;min-height:190px}.operation-card strong{font-size:48px}.operation-card b{font-size:24px}.operation-card span{font-size:18px}
+ .lesson-instruction{font-size:23px}.equation-pair span,.model-caption,.coffer small{font-size:16px}.model-heading{font-size:20px}.coffer-label{font-size:16px}
+ .number-track svg{min-width:0}.action-result{font-size:20px}.answer{font-size:28px;min-height:64px}.answer::placeholder{font-size:18px}
+ .grid,.split{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .setting{font-size:16px;grid-template-columns:minmax(0,1fr) 90px}.setting input{width:90px}.inlinecheck{font-size:16px}
+ dialog{max-width:600px;padding:30px}dialog h2{font-size:32px}dialog button{min-height:56px}
+}
+@media (min-width:1001px) and (max-width:1400px) and (orientation:landscape){
+ .layout{grid-template-columns:minmax(0,1fr) 270px}.side{display:flex}.map{min-height:530px}.map .island{width:210px;font-size:17px}.map .island small{font-size:14px}
+ .side .card{padding:20px}.side h2{font-size:26px}.side h3{font-size:23px}
+ .split{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+}
+@media (min-width:600px) and (max-width:900px){.split{grid-template-columns:minmax(0,1fr)}}
+@media (hover:none){button:hover{filter:none}.island:hover{transform:translate(-50%,-50%)}}
+
 </style>
 <header><div class="brand"><span style="font-size:32px">⚓</span><div>La aventura del tesoro<small>PEQUEÑOS PASOS, GRANDES DESCUBRIMIENTOS</small></div></div><nav aria-label="Principal"><button onclick="page('map')" id="nav-map">Mi mapa</button><button onclick="page('rewards')" id="nav-rewards">Tesoros en familia</button><button onclick="page('adult')" id="nav-adult">Para adultos</button></nav><button class="coins" onclick="page('rewards')">🪙 <span id="balance">0</span></button></header><section class="audio-bar" aria-label="Música pirata"><button id="music-toggle" class="outline" onclick="toggleMusic()" aria-pressed="false">♫ Activar música pirata</button><label for="music-volume">Volumen <input id="music-volume" type="range" min="0" max="100" value="20" oninput="setMusicVolume(this.value)"></label><p class="audio-note">Música original de aventura en alta mar. Se activa al pulsar Comenzar; puedes ajustar el volumen o apagarla cuando quieras.</p></section><main id="app"></main><footer>Hecho para aprender a tu ritmo · Sin prisas, cada intento cuenta.<br>Versión de prueba · El progreso se guarda solo en este navegador. Sin cuentas ni sincronización todavía.</footer><dialog id="profile"><form id="profile-form"><div class="eyebrow">TU AVENTURA COMIENZA AQUÍ</div><h2>¡Bienvenida a bordo!</h2><p>Elige cómo quieres que te llamemos y quién viajará contigo.</p><label for="nickname">Tu nombre o apodo</label><input id="nickname" maxlength="24" required autocomplete="nickname" placeholder="Escribe tu apodo"><label>Tu compañero de aventuras</label><div class="row avatars" id="avatars"></div><p class="small muted">Puedes cambiar tu elección después sin perder tus logros.</p><button class="gold" type="submit">¡A explorar!</button></form></dialog><dialog id="launch-adventure" aria-label="Bienvenida a la aventura"></dialog><div id="toast" role="status"></div>
-<script src="app.js?v=islas15" defer></script></body></html>
+<script src="app.js?v=tablet16" defer></script></body></html>

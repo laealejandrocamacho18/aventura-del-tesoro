@@ -1,7 +1,7 @@
 'use strict';
 const CACHE_PREFIX='tesoro-offline-';
-const CACHE_NAME=CACHE_PREFIX+'app18';
-const ASSETS=['./','index.html','tablas.html','app.js?v=app18','app-tablas-v11.js','pwa.js?v=app18','manifest.webmanifest','icon-192.png','icon-512.png','icon.svg'];
+const CACHE_NAME=CACHE_PREFIX+'app20';
+const ASSETS=['./','index.html','tablas.html','app.js?v=app20','operations.js?v=app20','app-tablas-v11.js','pwa.js?v=app20','manifest.webmanifest','icon-192.png','icon-512.png','icon.svg'];
 const base=new URL('./',self.location.href);
 const paths=new Set(ASSETS.map(path=>new URL(path,base).pathname));
 self.addEventListener('install',event=>{
@@ -24,10 +24,10 @@ self.addEventListener('fetch',event=>{
     try{
       const response=await fetch(request);
       if(response.ok){event.waitUntil(cache.put(request,response.clone()).catch(()=>{}));return response}
-      const cached=await cache.match(request,{ignoreSearch:true});
+      const cached=await cache.match(request)||await cache.match(request,{ignoreSearch:true});
       return cached||response;
     }catch{
-      const cached=await cache.match(request,{ignoreSearch:true});
+      const cached=await cache.match(request)||await cache.match(request,{ignoreSearch:true});
       if(cached)return cached;
       if(request.mode==='navigate'){const home=await cache.match(new URL('index.html',base),{ignoreSearch:true});if(home)return home}
       return Response.error();

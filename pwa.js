@@ -18,9 +18,9 @@
   });
   function connectionLabel(ready){status.textContent=ready?(navigator.onLine?'Lista para usar sin internet en este dispositivo.':'Sin internet: puedes seguir practicando.'):(navigator.onLine?'Preparando el uso sin internet…':'Conéctate una vez para preparar el uso sin internet.')}
   let offlineReady=false;
-  function renderConnection(){connectionLabel(offlineReady)}
+  function renderConnection(){if(registration?.installing&&navigator.serviceWorker.controller){status.textContent='Descargando la nueva versión para usar sin internet…';return}if(registration?.waiting&&navigator.serviceWorker.controller){status.textContent='Hay una actualización lista. Pulsa Actualizar app para usar la nueva versión sin internet.';return}connectionLabel(offlineReady)}
   window.addEventListener('online',renderConnection);window.addEventListener('offline',renderConnection);
-  function offerUpdate(){update.hidden=!(registration?.waiting&&navigator.serviceWorker.controller);if(!update.hidden)update.textContent='Actualizar app'}
+  function offerUpdate(){update.hidden=!(registration?.waiting&&navigator.serviceWorker.controller&&!registration.installing);if(!update.hidden)update.textContent='Actualizar app';renderConnection()}
   update.addEventListener('click',()=>{
     if(!registration?.waiting)return;
     if(!confirm('¿Actualizar la app ahora? La actividad en curso comenzará de nuevo; tus monedas y las misiones terminadas se conservan.'))return;
@@ -33,7 +33,7 @@
     try{
       registration=await navigator.serviceWorker.register('sw.js',{scope:'./',updateViaCache:'none'});
       offerUpdate();
-      registration.addEventListener('updatefound',()=>{const worker=registration.installing;worker?.addEventListener('statechange',()=>{if(worker.state==='installed')offerUpdate();if(worker.state==='redundant'&&!offlineReady)status.textContent='No se pudo completar la descarga para usar sin internet. Vuelve a abrir la página con conexión.'})});
+      registration.addEventListener('updatefound',()=>{const worker=registration.installing;worker?.addEventListener('statechange',()=>{if(worker.state==='installed')setTimeout(offerUpdate,0);if(worker.state==='redundant'&&!offlineReady)status.textContent='No se pudo completar la descarga para usar sin internet. Vuelve a abrir la página con conexión.'})});
       await navigator.serviceWorker.ready;
       offlineReady=true;renderConnection();offerUpdate();
     }catch{status.textContent='No se pudo preparar el uso sin internet. Puedes seguir usando la página con conexión.'}

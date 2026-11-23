@@ -27,3 +27,11 @@ Abrir la página en Chrome y pulsar «Instalar app en mi tablet» o usar el men�
 Esperar «Lista para usar sin internet en este dispositivo» antes de desconectarse. El service worker descarga las páginas, el código, los íconos y el manifiesto; la música se sintetiza en el dispositivo. Las fuentes externas son opcionales y tienen alternativas locales. El progreso sigue en localStorage, ligado a este navegador/dispositivo; no hay cuentas ni sincronización. Borrar los datos del sitio también puede borrar el progreso y la descarga offline.
 
 Publicar todos los archivos juntos. En cada actualización que cambie recursos offline, cambiar `CACHE_NAME` en `sw.js` y las versiones de los scripts en las dos páginas y en `ASSETS`. Las actualizaciones esperan a que se cierren las pestañas o a que el usuario pulse «Actualizar app» y confirme; no se recarga automáticamente una misión en curso.
+
+## Cuaderno de operaciones
+
+La Isla de las Operaciones ofrece «Operaciones aleatorias» (3, 5 o 10 ejercicios, tres dificultades y opción de mezcla) y «Ejercicios personalizados». Estos últimos se pueden guardar, editar, eliminar y seleccionar: hasta 50 guardados y de 1 a 10 por práctica. Las restas no son negativas; no se divide entre cero. Los números admitidos aparecen en el formulario.
+
+`operations.js` construye el cuaderno con llevadas, préstamos, productos parciales y división larga: divisor fuera de la casita, cociente encima, productos, restas, residuos y cifras que se bajan. Solo el cuadro activo es editable. Al acertar se activa el siguiente; la pista o cualquier error registra la operación como realizada con apoyo. Los cuadros futuros no muestran respuestas. Las monedas corresponden a operaciones completas, no a cada cifra escrita; se guardan al terminar la sesión. Repetir el mismo ejercicio personalizado en el mismo día conserva el registro de práctica sin volver a otorgar sus monedas. Los ejercicios y las misiones terminadas se guardan localmente; una sesión en curso puede reiniciarse al cerrar o actualizar.
+
+Verificado con 12,816 modelos de operaciones, incluidos préstamos entre ceros y ceros dentro del cociente; sesiones completas con y sin apoyo, guardado y edición, prevención de recompensas duplicadas, las tablas existentes y recuperación offline de `operations.js`. Pruebas en vistas de tablet de 768×1024 y 1024×768.

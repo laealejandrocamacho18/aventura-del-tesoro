@@ -1,7 +1,7 @@
 'use strict';
 const CACHE_PREFIX='tesoro-offline-';
-const CACHE_NAME=CACHE_PREFIX+'app17';
-const ASSETS=['./','index.html','tablas.html','app.js?v=app17','app-tablas-v11.js','pwa.js?v=app17','manifest.webmanifest','icon-192.png','icon-512.png','icon.svg'];
+const CACHE_NAME=CACHE_PREFIX+'app18';
+const ASSETS=['./','index.html','tablas.html','app.js?v=app18','app-tablas-v11.js','pwa.js?v=app18','manifest.webmanifest','icon-192.png','icon-512.png','icon.svg'];
 const base=new URL('./',self.location.href);
 const paths=new Set(ASSETS.map(path=>new URL(path,base).pathname));
 self.addEventListener('install',event=>{
